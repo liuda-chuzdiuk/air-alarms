@@ -1,4 +1,4 @@
-"# air-alarms" 
+# Air alarms app
 
 Web application for displaying statistics of air alarms by regions of Ukraine
 
