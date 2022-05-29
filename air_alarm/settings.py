@@ -85,7 +85,7 @@ DATABASES = {
 }
 
 # dj-database-url
-db_from_venv = dj_database_url.config(conn_max_age=50000)
+db_from_venv = dj_database_url.config(conn_max_age=500)
 DATABASES["default"].update(db_from_venv)
 
 
