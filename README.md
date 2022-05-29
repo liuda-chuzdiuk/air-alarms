@@ -4,6 +4,7 @@ Web application for displaying statistics of air alarms by regions of Ukraine
 
 ## Check it out
 
+[Air alarms app deployed to Heroku](https://air-alarms.herokuapp.com/)
 
 ## Installation
 

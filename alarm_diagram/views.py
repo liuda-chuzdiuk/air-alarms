@@ -17,25 +17,25 @@ def index(request):
     start_date = history_response.json()[0]["date"][:10]
     end_date = history_response.json()[-1]["date"][:10]
 
-    # for raw in states_response.json()["states"]:
-    #     state = State.objects.get_or_create(
-    #         state_id=raw["id"],
-    #         name=raw["name"],
-    #         name_en=raw["name_en"]
-    #     )[0]
-    #     state.alarms_count = 0
-    #     state.save()
-    #
-    # for raw in history_response.json():
-    #     if raw["alert"]:
-    #         alarm = Alarm.objects.get_or_create(
-    #             id=raw["id"],
-    #             state_id_id=raw["state_id"],
-    #             alert=raw["alert"],
-    #         )
-    #         state = State.objects.get(state_id=alarm[0].state_id_id)
-    #         state.alarms_count += 1
-    #         state.save()
+    for raw in states_response.json()["states"]:
+        state = State.objects.get_or_create(
+            state_id=raw["id"],
+            name=raw["name"],
+            name_en=raw["name_en"]
+        )[0]
+        state.alarms_count = 0
+        state.save()
+
+    for raw in history_response.json():
+        if raw["alert"]:
+            alarm = Alarm.objects.get_or_create(
+                id=raw["id"],
+                state_id_id=raw["state_id"],
+                alert=raw["alert"],
+            )
+            state = State.objects.get(state_id=alarm[0].state_id_id)
+            state.alarms_count += 1
+            state.save()
 
     states = State.objects.all().order_by("alarms_count")
 
